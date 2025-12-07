@@ -1,0 +1,135 @@
+\documentclass{article}
+\usepackage{booktabs}
+\usepackage{graphicx}
+
+\setlength{\tabcolsep}{8pt} % 调整列间距，默认6pt
+\renewcommand{\arraystretch}{1.2} % 调整行高，默认1
+
+\begin{document}
+	
+	\begin{table}[htbp]
+		\centering
+		\caption{VAIHINGEN }
+		
+		\resizebox{\textwidth}{!}{%
+			\begin{tabular}{l l | c c c c c | c c c c}
+				\toprule
+				Method & Backbone & Imp.surf. & Building & Low veg. & Tree & Car & mIoU & Mean-F1 & OA \\
+				\midrule
+				UNetFormer  & ResNet18 & 93.6 & 91.9 & 72.3 & 81.1 & 79.4 & 83.7 & 90.9 & 93.1 \\
+				CMTFNet  & ResNet50 & 93.8 & 92.1 & 72.9 & 81.5 & 81.2 & 84.3 & 91.3 & 93.3 \\
+				FT-UNetFormer  & Swin-Base & 93.9 & 91.5 & 72.8 & 81.5 & 80.2 & 84.0 & 91.1 & 93.2 \\
+				DC-Swin  & Swin-Base & 93.3 & 90.0 & 72.4 & 81.1 & 76.4 & 82.6 & 90.3 & 92.7 \\
+				\midrule
+				MSA-SAM  & ViT-Base & 93.9 & 92.8 & 74.5 & 82.9 & 81.8 & 84.3 & 91.3 & 93.1 \\
+				CWSAM  & ViT-Base & 92.7 & 89.1 & 72.3 & 80.6 & 75.7 & 82.1 & 89.9 & 92.4 \\
+				MeSAM  & ViT-Base & 94.3 & 91.8 & 73.8 & 82.2 & 78.1 & 84.0 & 91.1 & 93.5 \\
+				SAM-Frozen & ViT-Base & 86.1 & 76.6 & 54.0 & 73.9 & 44.8 & 67.2 & 79.4 & 86.2 \\
+				SSRS & ViT-Base & 93.4 & 91.2 & 72.8 & 81.4 & 81.6 & 82.5 & 90.1 & 92.9 \\
+				SESSRS & ViT-Base & 93.1 & 92.5 & 72.7 & 81.8 & 82.3 & 82.9 & 90.4 & 93.4 \\
+				Ours & ViT-Base & \textbf{94.9} & \textbf{93.2} & \textbf{75.9} & \textbf{83.4} & \textbf{82.9} & \textbf{85.8} & \textbf{92.6} & \textbf{94.1} \\
+				\bottomrule
+			\end{tabular}
+		}
+		\label{tab:comparison}
+	\end{table}
+	
+	
+	\begin{table}[htbp]
+		\centering
+		% \caption{Postdam }
+		
+		\resizebox{\textwidth}{!}{%
+			\begin{tabular}{l l | c c c c c | c c c c}
+				\toprule
+				Method & Backbone & Imp.surf. & Building & Low veg. & Tree & Car & mIoU & Mean-F1 & OA \\
+				\midrule
+				UNetFormer  & ResNet18 & 86.2 & 90.8 & 75.0 & 77.8 & 91.4 & 84.2 & 91.3 & 89.6 \\
+				CMTFNet  & ResNet50 & 88.3 & 92.9 & 77.0 & 78.9 & 92.7 & 85.9 & 92.3 & 91.1 \\
+				FT-UNetFormer  & Swin-Base & 88.6 & 93.5 & 78.2 & 79.7 & 91.5 & 86.3 & 92.5 & 91.4 \\
+				DC-Swin  & Swin-Base & 88.7 & 93.4 & 77.9 & 80.1 & 91.8 & 86.4 & 92.6 & 91.4 \\
+				\midrule
+				MSA-SAM  & ViT-Base & 90.1 & 94.7 & 79.1 & 80.9 & 93.4 & 87.7 & 93.3 & 92.1 \\
+				CWSAM  & ViT-Base & 88.7 & 89.6 & 74.8 & 80.6 & 85.7 & 86.2 & 90.9 & 91.2 \\ % 保持不变
+				MeSAM  & ViT-Base & 89.3 & 90.3 & 75.9 & 79.8 & 86.1 & 86.8 & 91.0 & 91.4 \\ % 保持不变
+				SAM-Frozen & ViT-Base & 68.6 & 70.5 & 55.2 & 56.1 & 69.8 & 64.1 & 77.9 & 76.3 \\
+				SSRS & ViT-Base & 87.6 & 90.1 & 75.6 & 79.4 & 88.9 & 86.1 & 91.5 & 90.8 \\ % 保持不变
+				SESSRS & ViT-Base & 87.9 & 90.5 & 76.0 & 80.2 & 89.6 & 87.2 & 91.8 & 91.1 \\ % 保持不变
+				Ours & ViT-Base & \textbf{90.8} & \textbf{95.1} & \textbf{79.7} & \textbf{81.3} & \textbf{94.0} & \textbf{87.9} & \textbf{93.7} & \textbf{92.5} \\
+				\bottomrule
+			\end{tabular}
+		}
+		\label{tab:comparison}
+	\end{table}
+	
+	\begin{table}[htbp]
+		\centering
+		% \caption{Quantitative results on Potsdam dataset}
+		\begin{tabular}{l c c c}
+			\toprule
+			Method & mIoU  & MeanF1  & OA  \\
+			\midrule
+			SAM-Frozen     & 68.55 & 75.34 & 74.36 \\
+			SAM-Frozen+MixDecoder     & 74.80 & 89.89 & 86.25 \\
+			SAM+CNN        & 86.40 & 91.54 & 92.46 \\
+			SAM+MSDC        & 87.31 & 93.02 & 91.11 \\
+			Ours    & 87.92 & 93.71 & 92.54 \\
+			\bottomrule
+		\end{tabular}
+		\label{tab:potsdam_results}
+	\end{table}
+	
+	
+	\begin{table}[htbp]
+		\centering
+		% \caption{RefSegRS dataset}
+		\resizebox{\textwidth}{!}{%
+			\begin{tabular}{l | c c c c c | c c}
+				\toprule
+				Methods & Pr@0.5 & Pr@0.6 & Pr@0.7 & Pr@0.8 & Pr@0.9 & oIoU & mIoU \\
+				\midrule
+				CMPC    	 	& 55.83 & 47.40 & 36.94 & 25.45 & 9.19  & 69.22 & 49.24 \\
+				LAVT         & 70.23 & 55.53 & 30.05 & 14.42 & 4.07  & 76.21 & 57.30 \\
+				CrossVLT     & 71.16 & 58.28 & 34.51 & 16.35 & 5.06  & 77.44 & 58.84 \\
+				RMISN        & 71.60 & 55.97 & 31.87 & 11.72 & 1.93  & 71.73 & 57.78 \\
+				FIANet 			& 84.09 & 77.05 & 61.86 & 33.41 & 7.10  & 78.32 & 68.67 \\
+				LGCE          & 76.55 & 67.03 & 44.85 & 19.04 & 5.67  & 77.62 & 61.90 \\
+				RSTG-SAM        & 76.07 & 69.25 & 42.51 & 25.61 & 6.93  & 77.53 & 63.47 \\
+				Enti-TwistNet   & 77.56 & 69.74 & 44.85 & 26.52 & 7.50  & 78.16 & 64.87 \\
+				RSRefSeg		& 82.82 & 79.35 & 60.66 & 45.86 & 15.78 & 80.05 & 73.68 \\
+				\midrule
+				ours   & \textbf{84.09} & \textbf{80.05} & \textbf{63.56} & \textbf{50.41} & \textbf{16.10} & \textbf{81.32} & \textbf{76.54} \\
+				\bottomrule
+			\end{tabular}
+		}
+		\label{tab:comparison_metrics}
+	\end{table}
+	
+	
+	\begin{table}[htbp]
+		\centering
+		% \caption{RRS_D}
+		\resizebox{\textwidth}{!}{%
+			\begin{tabular}{l | c c c c c | c c}
+				\toprule
+				Methods & Pr@0.5 & Pr@0.6 & Pr@0.7 & Pr@0.8 & Pr@0.9 & oIoU & mIoU \\
+				\midrule
+				CMPC        & 55.83 & 47.40 & 36.94 & 25.45 & 9.19  & 69.22 & 49.24 \\
+				LAVT        & 66.93 & 60.99 & 51.71 & 39.79 & 23.99 & 76.58 & 59.05 \\
+				CrossVLT    & 70.38 & 63.83 & 52.86 & 42.11 & 25.02 & 76.32 & 61.00 \\
+				RMISN       & 71.96 & 65.76 & 55.16 & 42.03 & 24.98 & 76.50 & 62.27 \\
+				FIANet   & 74.46 & 66.96 & 56.31 & 42.83 & 24.13 & 76.91 & 64.01 \\
+				LGCE         & 69.41 & 63.06 & 53.46 & 41.22 & 24.27 & 76.24 & 61.02 \\
+				RSTG-SAM        & 76.38 & 72.87 & 62.25 & 47.89 & 28.38  & 77.22 & 65.84 \\
+				Enti-TwistNet   & 78.54 & 68.78 & 57.25 & 43.45 & 24.74  & 78.86 & 66.47 \\
+				RSRefSeg		& 74.49 & 68.33 & 58.73 & 48.50 & 30.80 & 77.24 & 64.67 \\
+				\midrule
+				ours   & \textbf{79.54} & \textbf{70.52} & \textbf{60.87} & \textbf{52.87} & \textbf{31.10} & \textbf{78.22} & \textbf{65.24} \\
+				\bottomrule
+			\end{tabular}
+		}
+		\label{tab:comparison_metrics_2}
+	\end{table}
+	
+	
+\end{document}
